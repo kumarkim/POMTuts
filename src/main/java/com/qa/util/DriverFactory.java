@@ -1,5 +1,8 @@
 package com.qa.util;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -30,17 +33,21 @@ public class DriverFactory {
 		return ObjectHolder.instance;
 	}
 
-	public void intiDriver(String localBrowser) {
+	public void intiDriver(String localBrowser) throws IOException {
 		WebDriver driver = null;
 		String browser = prop.getBrowser();
 		if (browser.equals(SeleniumConstants.CHROME)) {
-			WebDriverManager.chromedriver().setup();
+			String dPath ="./drivers/chromedriver.exe";
+			System.setProperty("webdriver.chrome.driver", dPath);
+		//	WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			tDriver.set(driver);
 		}
 
 		if (browser.equals(SeleniumConstants.FIREFOX)) {
-			WebDriverManager.firefoxdriver().setup();
+			String dPath ="./drivers/geckodriver.exe";
+			System.setProperty("webdriver.gecko.driver", dPath);
+			//WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			tDriver.set(driver);
 		}

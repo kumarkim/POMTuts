@@ -20,10 +20,16 @@ public class TestBase {
 	}
 
 	public void intiliazeDriver() {
+		try {
 		dFactoryInstance = DriverFactory.getInstance();
 		dFactoryInstance.intiDriver(SeleniumConstants.CHROME);
 		driver = dFactoryInstance.getDriver();
 		driver.get(configProp.getUrl());
+		}
+		catch(Exception e) {
+			System.out.println("Exception in intitializing Driver");
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }

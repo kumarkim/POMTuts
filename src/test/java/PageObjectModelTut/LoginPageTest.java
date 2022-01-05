@@ -3,7 +3,6 @@ package PageObjectModelTut;
 import java.lang.reflect.Method;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -30,7 +29,7 @@ public class LoginPageTest extends TestBase {
 		
 	}
 	
-	@AfterClass()
+	@AfterTest()
 	public void teardown() {
 		System.out.println("After test called for login Page test");
 		driver.quit();
