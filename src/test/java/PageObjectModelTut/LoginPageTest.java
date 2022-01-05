@@ -21,7 +21,7 @@ public class LoginPageTest extends TestBase {
 		super();
 	}
 	
-	@BeforeClass()
+	@BeforeMethod()
 	public void setup() {
 	System.out.println("Before test called for login Page test");
 		intiliazeDriver();
@@ -29,7 +29,7 @@ public class LoginPageTest extends TestBase {
 		
 	}
 	
-	@AfterTest()
+	@AfterMethod()
 	public void teardown() {
 		System.out.println("After test called for login Page test");
 		driver.quit();
