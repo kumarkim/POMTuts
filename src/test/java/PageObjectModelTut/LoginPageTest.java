@@ -1,7 +1,11 @@
 package PageObjectModelTut;
 
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -18,21 +22,24 @@ public class LoginPageTest extends TestBase {
 		super();
 	}
 	
-	@BeforeTest()
+	@BeforeClass()
 	public void setup() {
+	System.out.println("Before test called for login Page test");
 		intiliazeDriver();
 		loginPage = new FirstPage().clickOnLoginButton();
 		
 	}
 	
-	@AfterTest()
+	@AfterClass()
 	public void teardown() {
+		System.out.println("After test called for login Page test");
 		driver.quit();
 		
 	}
 	
 	@Test
-	public void LoginTest() {
+	public void LoginTest(Method method) {
+		System.out.println("Method under test"+ method.getName());
 		String userName = configProp.getUsername();
 		String pwd = configProp.getPassword();
 		

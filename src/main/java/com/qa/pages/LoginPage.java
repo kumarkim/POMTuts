@@ -22,11 +22,11 @@ public class LoginPage extends TestBase {
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 		utils = SeleniumUtils.getInstance();
-		System.out.println("LoginpageInitialezed");
+		
 	}
 
 	public void enterUsername(String userName) {
-		System.out.println("Enter usr name called");
+		
 		utils.waituntilDocumentLoad(driver);
 		utils.sendKeysUsingExplicitWait2(email, driver, userName);
 	//	email.sendKeys(userName);
@@ -42,7 +42,6 @@ public class LoginPage extends TestBase {
 		enterUsername(userName);
 		enterPwd(Password);
 		signIn.click();
-		System.out.println("HomePageTitle="+driver.getTitle());
 		return new HomePage();
 	}
 	

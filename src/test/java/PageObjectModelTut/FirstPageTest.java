@@ -1,5 +1,7 @@
 package PageObjectModelTut;
 
+import java.lang.reflect.Method;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -21,21 +23,23 @@ public class FirstPageTest extends TestBase {
 	}
 
 	@BeforeMethod
-	public void test() {
-		System.out.println("Before method called");
+	public void setup(Method method) {
+		System.out.println("Starting Driver :Before method called for :"+method.getName());
 		intiliazeDriver();
 		firstpage = new FirstPage();
 	}
 
 	@Test(priority = 1, enabled =true)
-	public void verifyFirstPageTitle() {
+	public void verifyFirstPageTitle(Method method) {
+		System.out.println("Method under test"+ method.getName());
 		String expectedtTitle = "#1 Free CRM customer relationship management software cloud";
 		String actualTitle = firstpage.getFirstPageTitle();
 		Assert.assertEquals(actualTitle, expectedtTitle);
 	}
 
 	@Test(priority = 2)
-	public void clickSigninAndVerifyLoginpageTitle() {
+	public void clickSigninAndVerifyLoginpageTitle(Method method) {
+		System.out.println("Method under test"+ method.getName());
 		LoginPage loginPage = firstpage.clickOnLoginButton();
 		String expectedTitle = "Cogmento CRM";
 		String actualloginPageTitle = loginPage.getLoginPageTitle();
@@ -44,9 +48,9 @@ public class FirstPageTest extends TestBase {
 	}
 
 	@AfterMethod
-	public void tearDown() {
-		System.out.println("Thread=" + Thread.currentThread().getName());
-		System.out.println("After Method called");
+	public void tearDown(Method method) {
+		
+		System.out.println("Qutting Driver:After Method called"+method.getName());
 		driver.quit();
 	}
 }

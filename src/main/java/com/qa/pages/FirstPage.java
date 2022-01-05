@@ -16,7 +16,6 @@ public class FirstPage extends TestBase {
 	
 	public FirstPage(){
 		super();
-		System.out.println("Initializing First page");
 		PageFactory.initElements(driver, this);
 	}
 	

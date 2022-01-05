@@ -21,11 +21,9 @@ public class TestBase {
 
 	public void intiliazeDriver() {
 		dFactoryInstance = DriverFactory.getInstance();
-		System.out.println("initializing Driver in Base class");
 		dFactoryInstance.intiDriver(SeleniumConstants.CHROME);
 		driver = dFactoryInstance.getDriver();
 		driver.get(configProp.getUrl());
-		System.out.println("Driver initilazed in base class");
 	}
 	
 }
