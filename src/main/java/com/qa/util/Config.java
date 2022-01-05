@@ -41,4 +41,9 @@ public class Config {
 		String uName =  (String) prop.get("password");
 		return uName;
 	}
+	
+	public Boolean getRemote() {
+		String remote =  (String) prop.get("remote");
+		return Boolean.valueOf(remote);
+	}
 }
