@@ -15,16 +15,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import com.qa.constants.SeleniumConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 
 public class DriverFactory {
 
 	ThreadLocal<WebDriver> tDriver = new ThreadLocal<WebDriver>();
 	Config prop = Config.getInstance();
-	String url ="http://localhost:4444/wd/hub";
+	String url = "http://localhost:4444/wd/hub";
 
 	private DriverFactory() {
 
@@ -44,29 +45,27 @@ public class DriverFactory {
 		Boolean isRemote = prop.getRemote();
 		String browser = prop.getBrowser();
 		if (browser.equals(SeleniumConstants.CHROME)) {
-			if(isRemote) {
-				
-			}
-			else {
-			String dPath ="./drivers/chromedriver.exe";
-			System.setProperty("webdriver.chrome.driver", dPath);
-		//	WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();	
+			if (isRemote) {
+
+			} else {
+				String dPath = "./drivers/chromedriver.exe";
+				System.setProperty("webdriver.chrome.driver", dPath);
+				// WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
 			}
 			tDriver.set(driver);
 		}
 
 		if (browser.equals(SeleniumConstants.FIREFOX)) {
-			if(isRemote) {
+			if (isRemote) {
 				DesiredCapabilities capabilities = new DesiredCapabilities();
 				capabilities.setBrowserName(BrowserType.FIREFOX);
-				driver = new RemoteWebDriver(new URL(url),capabilities);
-			}
-			else {
-				String dPath ="./drivers/geckodriver.exe";
+				driver = new RemoteWebDriver(new URL(url), capabilities);
+			} else {
+				String dPath = "./drivers/geckodriver.exe";
 				System.setProperty("webdriver.gecko.driver", dPath);
-				//WebDriverManager.firefoxdriver().setup();
-				driver = new FirefoxDriver();		
+				// WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
 			}
 			tDriver.set(driver);
 		}
@@ -78,9 +77,10 @@ public class DriverFactory {
 	}
 
 	public synchronized WebDriver getDriver() {
-		System.out.println("Driver started in thread:"+ Thread.currentThread().getName());
+		System.out.println("Driver started in thread:" + Thread.currentThread().getName());
 		return tDriver.get();
 
 	}
 
+	
 }

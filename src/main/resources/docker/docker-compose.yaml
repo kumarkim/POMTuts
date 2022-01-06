@@ -1,0 +1,48 @@
+# To execute this docker-compose yml file use `docker-compose -f <file_name> up`
+# Add the `-d` flag at the end for detached execution
+version: '2'
+services:
+  chrome:
+    image: selenium/node-chrome:3.141.59-20210929
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+      - NODE_MAX_INSTANCES=3
+      - NODE_MAX_SESSION=4
+
+  firefox:
+    image: selenium/node-firefox:3.141.59-20210929
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+      - NODE_MAX_INSTANCES=2
+      - NODE_MAX_SESSION=2
+      
+  edge:
+     image:  selenium/node-edge:4.1.1-20211217
+     volumes:
+       - /dev/shm:/dev/shm
+     depends_on:
+       - hub
+     environment:
+       HUB_HOST: hub
+       
+  firefox2:
+    image: selenium/node-firefox:3.141.59-20210929
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+
+  hub:
+    image: selenium/hub:3.141.59-20210929
+    ports:
+      - "4444:4444"

@@ -11,6 +11,7 @@ import com.qa.base.TestBase;
 import com.qa.pages.FirstPage;
 import com.qa.pages.LoginPage;
 import com.qa.util.Config;
+;
 
 public class FirstPageTest extends TestBase {
 
