@@ -37,7 +37,7 @@ public class DockerCompose {
 		Runtime.getRuntime().exec("cmd /c start "+location);
 		Thread.sleep(15000);
 		System.out.println("Docker compose down complete");
-	//	Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+		Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
 	}
 
 }
