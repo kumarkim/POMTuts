@@ -8,9 +8,11 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="PageObjectModelTut.FirstPageTest"/>
+      <!--
       <class name="PageObjectModelTut.LoginPageTest"/>
       <class name="PageObjectModelTut.HomePageTest"/>
       <class name="PageObjectModelTut.ContactsPageTest"/>
+      -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
