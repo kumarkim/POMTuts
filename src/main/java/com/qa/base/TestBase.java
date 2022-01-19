@@ -40,6 +40,19 @@ public class TestBase {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void intiliazeDriver(String browser) {
+		try {
+			
+			String driverType = browser;
+			driver = new AbstractDriverFactory().creatDriver(driverType, remote, remptoteURL);
+			driver.get(configProp.getUrl());
+			
+		} catch (Exception e) {
+			System.out.println("Exception in intitializing Driver");
+			System.out.println(e.getMessage());
+		}
+	}
 
 	@BeforeSuite
 	public void dockerComposeUp() {

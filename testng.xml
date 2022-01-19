@@ -6,13 +6,12 @@
 	<listener class-name="extentreportListner.ExtentReporterNG"></listener>
 </listeners>
   <test thread-count="5" name="Test">
+  <parameter name ="browserName" value="chrome"></parameter>
     <classes>
       <class name="PageObjectModelTut.FirstPageTest"/>
-      <!--
-      <class name="PageObjectModelTut.LoginPageTest"/>
       <class name="PageObjectModelTut.HomePageTest"/>
+      <class name="PageObjectModelTut.LoginPageTest"/>  
       <class name="PageObjectModelTut.ContactsPageTest"/>
-      -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

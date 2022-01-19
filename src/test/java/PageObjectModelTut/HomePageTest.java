@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
+import org.testng.annotations.Parameters;
 
 import com.qa.base.TestBase;
 import com.qa.pages.ContactsPage;
@@ -24,10 +26,18 @@ public class HomePageTest extends TestBase{
 		super();
 	}
 	
+	@Parameters("browerName")
 	@BeforeMethod
-	public void setup(Method method) {
-		System.out.println("Before method called for "+ method.getName());
-		intiliazeDriver();
+	public void setup(Method method,@Optional("firefox") String browserName) {
+
+		String browser = browserName;
+		System.out.println("Starting Driver :Before method called for :" + method.getName());
+		String browserfromMaven = System.getProperty("browser");
+		if (browserfromMaven != null) {
+			System.out.println("Browser from maven=" + browserfromMaven);
+			browser = browserfromMaven;
+		}
+		intiliazeDriver(browser);
 		loginPage =new FirstPage().clickOnLoginButton();
 		homePage =loginPage.login(configProp.getUsername(), configProp.getPassword());
 	}
