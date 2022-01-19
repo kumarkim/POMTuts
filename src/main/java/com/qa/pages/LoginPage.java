@@ -27,18 +27,20 @@ public class LoginPage extends TestBase {
 
 	public void enterUsername(String userName) {
 		
-		utils.waituntilDocumentLoad(driver);
-		utils.sendKeysUsingExplicitWait2(email, driver, userName);
-	//	email.sendKeys(userName);
+		selUtils.waituntilDocumentLoad(driver);
+		selUtils.sendKeysUsingExplicitWait(email, driver, userName);
+	
 	}
 
 	public void enterPwd(String pswd) {
-		//utils.sendKeysUsingExplicitWait1(pwd, driver, pswd);
+		selUtils.waituntilDocumentLoad(driver);
 		pwd.sendKeys(pswd);
 	}
 	
 	public HomePage login(String userName, String Password) {
+		selUtils.waituntilDocumentLoad(driver);
 		System.out.println("Logging into HomePage");
+		
 		enterUsername(userName);
 		enterPwd(Password);
 		signIn.click();

@@ -39,35 +39,35 @@ public class SeleniumUtils {
 		}).sendKeys(msg);
 	}
 
+	public void explicitWaitfoElem(WebElement elem, WebDriver driver) {
 
-	public void sendKeysUsingExplicitWait2( WebElement elem, WebDriver driver, String msg) {
-		System.out.println("Explicity waiting");
 		Wait<WebDriver> wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOf(elem)).sendKeys(msg);
+		wait.until(ExpectedConditions.visibilityOf(elem));
+		System.out.println("Explicity waiting for eleme to get over");
 	}
-	
+
 	public void waituntilDocumentLoad(WebDriver driver) {
 		Wait<WebDriver> wait = new WebDriverWait(driver, 20);
-		
-		wait.until((d)->{
-			boolean some = ((JavascriptExecutor )d).executeScript("return document.readyState").equals("complete");
+
+		wait.until((d) -> {
+			boolean some = ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete");
 			return some;
 		});
-		
+
 		System.out.println("wait over");
+	}
+
+	public void clickUsingJS(WebDriver driver, WebElement elem) {
 		
-		
+		JavascriptExecutor exec = (JavascriptExecutor) driver ;
+		exec.executeAsyncScript("arguments[0].click();", elem);
 	}
 }
-	
-	
 
-/*wait.until(new Function<WebDriver, Boolean>() {
-
-			@Override
-			public Boolean apply(WebDriver webdriver) {
-				((JavascriptExecutor)	webdriver).executeScript("return document.readyState").equals("complete");
-				return true;
-			}
-		});
-*/
+/*
+ * wait.until(new Function<WebDriver, Boolean>() {
+ * 
+ * @Override public Boolean apply(WebDriver webdriver) { ((JavascriptExecutor)
+ * webdriver).executeScript("return document.readyState").equals("complete");
+ * return true; } });
+ */

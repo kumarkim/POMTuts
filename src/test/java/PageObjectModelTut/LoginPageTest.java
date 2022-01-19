@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import com.qa.base.TestBase;
 import com.qa.pages.FirstPage;
+import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
 
 public class LoginPageTest extends TestBase {
@@ -42,8 +43,8 @@ public class LoginPageTest extends TestBase {
 		System.out.println("Method under test"+ method.getName());
 		String userName = configProp.getUsername();
 		String pwd = configProp.getPassword();
-		
-		loginPage.login(userName, pwd);
+		HomePage homepage =loginPage.login(userName, pwd);	
 	}
+	
 
 }

@@ -21,22 +21,22 @@ import org.testng.annotations.BeforeSuite;
 import com.qa.constants.SeleniumConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class DriverFactory {
+public class DriverFactoryOld {
 
 	ThreadLocal<WebDriver> tDriver = new ThreadLocal<WebDriver>();
 	Config prop = Config.getInstance();
 	String url = "http://localhost:4444/wd/hub";
 
-	private DriverFactory() {
+	private DriverFactoryOld() {
 
 	}
 
 	private static class ObjectHolder {
-		private static DriverFactory instance = new DriverFactory();
+		private static DriverFactoryOld instance = new DriverFactoryOld();
 
 	}
 
-	public static DriverFactory getInstance() {
+	public static DriverFactoryOld getInstance() {
 		return ObjectHolder.instance;
 	}
 
