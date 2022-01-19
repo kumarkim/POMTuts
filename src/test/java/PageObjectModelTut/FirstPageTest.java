@@ -47,6 +47,13 @@ public class FirstPageTest extends TestBase {
 		Assert.assertEquals(actualloginPageTitle, expectedTitle);
 		
 	}
+	
+	@Test(priority = 2)
+	public void NegativeTest(Method method) {
+		System.out.println("Method under test"+ method.getName());
+		Assert.assertEquals("negative", "postive");
+		
+	}
 
 	@AfterMethod
 	public void tearDown(Method method) {
