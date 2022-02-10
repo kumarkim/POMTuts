@@ -20,7 +20,7 @@ public class FirstPage extends TestBase {
 	}
 	
 	public LoginPage clickOnLoginButton(){
-		login.click();
+		keywords.clickOnButton(login);
 		return new LoginPage();
 	}
 	

@@ -13,6 +13,7 @@ import com.qa.constants.SeleniumConstants;
 import com.qa.util.Config;
 import com.qa.util.DockerCompose;
 import com.qa.util.SeleniumUtils;
+import com.qa.util.SeleniumKewords;
 
 import AbstractDriverFactory.AbstractDriverFactory;
 
@@ -23,11 +24,13 @@ public class TestBase {
 	String remptoteURL = "http://localhost:4444/wd/hub";
 	Boolean remote;
 	public SeleniumUtils selUtils;
+	public SeleniumKewords keywords;
 
 	public TestBase() {
 		configProp = Config.getInstance();
 		remote = configProp.getRemote();
 		selUtils = SeleniumUtils.getInstance();
+		keywords = SeleniumKewords.getInstance();
 	}
 
 	public void intiliazeDriver() {

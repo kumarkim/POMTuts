@@ -9,9 +9,11 @@
   <parameter name ="browserName" value="chrome"></parameter>
     <classes>
       <class name="PageObjectModelTut.FirstPageTest"/>
+      <!--  
       <class name="PageObjectModelTut.HomePageTest"/>
       <class name="PageObjectModelTut.LoginPageTest"/>  
       <class name="PageObjectModelTut.ContactsPageTest"/>
+     -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

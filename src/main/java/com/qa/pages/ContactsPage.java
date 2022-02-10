@@ -59,26 +59,25 @@ public class ContactsPage extends TestBase {
 		addFirstname(fname);
 		addLastName(lname);
 		addStatus(status2);
-		saveContacts.click();
+		keywords.clickOnButton(saveContacts);
 		Thread.sleep(5000);
 	}
 
 	private void addStatus(String statusActive) {
-		status.click();
+		keywords.clickOnButton(status);
 		selUtils.explicitWaitfoElem(active, driver);
-		active.click();
+		keywords.clickOnButton(active);
 		
 	}
 
 	private void addFirstname(String fname) {
 		selUtils.explicitWaitfoElem(firstName, driver);
-		firstName.sendKeys(fname);
-		
+		keywords.sendKeys(firstName, fname);
 	}
 
 	private void addLastName(String lname) {
 		selUtils.explicitWaitfoElem(lastName, driver);
-		lastName.sendKeys(lname);
+		keywords.sendKeys(lastName, lname);
 		
 	}
 
